@@ -1,0 +1,22 @@
+# 忽略fabric
+/fabric/organizations/
+/fabric/system-genesis-block/
+/fabric/channel-artifacts/
+/fabric/chaincode/go/fabcar/vendor
+/fabric/chaincode/go/marble/vendor
+fabric/scripts/org1log0.txt
+fabric/scripts/org1log1.txt
+fabric/scripts/org1log2.txt
+fabric/scripts/org2log1.txt
+fabric/scripts/org2log2.txt
+# /fabric/chaincode/go/fabcar/vendor/
+# /fabric/chaincode/go/marble/vendor/
+# 忽略fabric_clinet_org
+
+fabric/scripts/*.txt
+fabric/scripts/marble2chaincode.tar.gz
+fabric/scripts/marblechaincode.tar.gz
+fabric_client_org/server/log/server_error.log
+fabric_client_org/server/log/server_info.log
+fabric/chaincode/pkg/*
+

@@ -1,0 +1,112 @@
+version: 1.0.0
+client:
+  organization: Org2
+  logging:
+    level: info
+  cryptoconfig:
+    path: /home/wayne/samba/bs_server/fabric/organizations
+  credentialStore:
+    path: "/tmp/state-store"
+    cryptoStore:
+      path: /tmp/msp
+  tlsCerts:
+    client:
+      key:
+        path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
+      cert:
+        path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
+
+organizations:
+  Org1:
+    mspid: Org1MSP
+    cryptoPath:  ../bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/{username}@org1.ca.com/msp
+    peers:
+      - peer0.org1.ca.com
+    users:
+      Admin:
+        cert:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
+        key:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/keystore/priv_sk
+      User1:
+        cert:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/signcerts/cert.pem
+        key:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/keystore/priv_sk
+  Org2:
+    mspid: Org2MSP
+
+    # This org's MSP store (absolute path or relative to client.cryptoconfig)
+    cryptoPath:  ../bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/{username}@org2.ca.com/msp
+    users:
+      Admin:
+        cert:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
+        key:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
+      User1:
+        cert:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/signcerts/cert.pem
+        key:
+          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/keystore/priv_sk
+    peers:
+      - peer0.org2.ca.com
+       
+peers:
+  peer0.org1.ca.com:
+    url: localhost:7051
+    tlsCACerts:
+      path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/peers/peer0.org1.ca.com/tls/server.crt
+  peer0.org2.ca.com:
+    url: localhost:8051
+    tlsCACerts:
+      path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/tls/server.crt
+
+
+#
+# [Optional]. But most apps would have this section so that channel objects can be constructed
+# based on the content below. If an app is creating channels, then it likely will not need this
+# section.
+#
+channels:
+  # name of the channel
+  mychannel:
+    orderers:
+      - orderer1.ca.com
+    peers:
+      peer0.org1.ca.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+      peer0.org2.ca.com:
+        endorsingPeer: true
+        chaincodeQuery: true
+        ledgerQuery: true
+        eventSource: true
+    policies:
+      queryChannelConfig:
+        minResponses: 1
+        maxTargets: 1
+        retryOpts:
+          attempts: 5
+          initialBackoff: 500ms
+          maxBackoff: 5s
+          backoffFactor: 2.0
+orderers:
+  orderer1.ca.com:
+    # [Optional] Default: Infer from hostname
+    url: localhost:7050
+    # url: 127.0.0.1:7050
+    grpcOptions:
+      ssl-target-name-override: orderer1.ca.com
+      keep-alive-time: 0s
+      keep-alive-timeout: 20s
+      keep-alive-permit: false
+      fail-fast: false
+      allow-insecure: false
+
+    tlsCACerts:
+      # Certificate location absolute path
+      # path: /home/wayne/samba/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/tlscacerts/tlsca.ca.com-cert.pem
+      path: /home/wayne/samba/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/cacerts/localhost-9054-ca-orderer.pem

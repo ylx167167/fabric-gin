@@ -1,0 +1,45 @@
+{
+  
+"sdkinit":
+{
+  "configPath": "/home/wayne/samba/bs_server/fabric_client_org/conf/wayne_e2e.yaml",
+  "channelID": "mychannel",
+  "username": "Admin",
+  "org": "Org1"
+},
+
+"ccinstall":
+{
+  "name": "TEST14",
+  "version": "1.0.0",
+  "sequence": "1",
+  "channel": "mychannel",
+  "path": "/opt/gopath/src/hyperledger/fabric/peer/chaincode/go/marble",
+  "org": [
+    "org1",
+    "org2"
+  ],
+  "user": "Admin",
+  "cclang": "golang",
+  "ccpolicy": "\"AND('Org1MSP.peer','Org2MSP.peer')\""
+},
+"ccrequestinvoke":
+{
+  "name": "TEST14",
+  "func": "initMarble",
+  "args": [
+    "marble1",
+    "blue",
+    "35",
+    "tom"
+  ]
+},
+"ccrequestquery":
+{
+  "name": "TEST14",
+  "func": "readMarble",
+  "args": [
+    "marble1"
+  ]
+}
+}

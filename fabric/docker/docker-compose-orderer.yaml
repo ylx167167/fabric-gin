@@ -1,0 +1,36 @@
+version: "2"
+
+volumes:
+  orderer1.ca.com:
+  # orderer2.ca.com:
+  # orderer3.ca.com:
+
+networks:
+  Wayneyao:
+
+services:
+  orderer1.ca.com:
+    restart: always #每次重启docker时都会重启相关的容器
+    extends:
+      file: docker-compose-orderer-base.yaml
+      service: orderer-base
+    environment:
+      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_OPERATIONS_LISTENADDRESS=orderer1.ca.com:9443
+    container_name: orderer1.ca.com
+    volumes:
+      - ../system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+      - ../organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp:/var/hyperledger/orderer/msp
+      - ../organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/:/var/hyperledger/orderer/tls
+      # - orderer1.ca.com:/var/hyperledger/production/orderer
+      - /etc/localtime:/etc/localtime
+      - /etc/hosts:/etc/hosts
+    ports:
+      - 7050:7050
+      - 9443:9443
+    networks:
+      - Wayneyao
+    # extra_hosts:
+    #   - "orderer1.ca.com:10.8.15.118"
+    #   - "peer0.org1.ca.com:10.8.15.118"
+    #   - "peer0.org2.ca.com:10.8.13.67"

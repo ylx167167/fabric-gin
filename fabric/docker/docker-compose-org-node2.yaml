@@ -1,0 +1,105 @@
+version: "2"
+
+networks:
+  Wayneyao:
+volumes:
+  peer0.org2.ca.com:
+services:
+  peer0.org2.ca.com:
+    restart: always #每次重启docker时都会重启相关的容器
+    container_name: peer0.org2.ca.com
+    image: hyperledger/fabric-peer:$IMAGE_TAG
+    environment:
+      #Generic peer variables
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      # the following setting starts chaincode containers on the same
+      # bridge network as the peers
+      # https://docs.docker.com/compose/networking/
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=docker_Wayneyao
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_PROFILE_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+      # Peer specific variabes
+      - CORE_PEER_ID=peer0.org2.ca.com
+      - CORE_PEER_ADDRESS=peer0.org2.ca.com:8051
+      - CORE_PEER_ADDRESSAUTODETECT=true
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org2.ca.com:8052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.org2.ca.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org2.ca.com:8051
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpw
+      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_OPERATIONS_LISTENADDRESS=peer0.org2.ca.com:9445
+    volumes:
+      - /var/run/docker.sock:/host/var/run/docker.sock
+      - ../organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/msp:/etc/hyperledger/fabric/msp
+      - ../organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/tls:/etc/hyperledger/fabric/tls
+      - peer0.org2.ca.com:/var/hyperledger/production
+      - /etc/hosts:/etc/hosts
+      - /etc/localtime:/etc/localtime
+      - ../chaincode/:/opt/gopath/src/hyperledger/fabric/peer/chaincode
+      - ../config/:/opt/gopath/src/hyperledger/fabric/peer/config
+    working_dir: /opt/gopath/src/hyperledger/fabric/peer
+    command: peer node start
+    ports:
+      - 8051:8051
+      - 8052:8052
+      - 9445:9445
+    # extra_hosts:
+    #   - "orderer1.ca.com:10.8.15.118"
+    #   - "peer0.org1.ca.com:10.8.15.118"
+    #   - "peer0.org2.ca.com:10.8.13.67"
+    networks:
+      - Wayneyao
+
+  cli2:
+    container_name: Orgcli2
+    image: hyperledger/fabric-tools:$IMAGE_TAG
+    restart: always #每次重启docker时都会重启相关的容器
+    tty: true
+    stdin_open: true
+    environment:
+      - GOPATH=/opt/gopath
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
+      - CORE_PEER_ID=peer0.org2.ca.com
+      - CORE_PEER_ADDRESS=peer0.org2.ca.com:8051
+      - CORE_PEER_LOCALMSPID=Org2MSP
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/opt/gopath/src/hyperledger/fabric/peer/organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/opt/gopath/src/hyperledger/fabric/peer/organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/hyperledger/fabric/peer/organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/tls/ca.crt
+      - CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/hyperledger/fabric/peer/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp
+      - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb2:5984
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=admin
+      - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpw
+    working_dir: /opt/gopath/src/hyperledger/fabric/peer
+    command: /bin/bash
+    volumes:
+      - /var/run/:/host/var/run/
+      - ../organizations:/opt/gopath/src/hyperledger/fabric/peer/organizations
+      - ../scripts:/opt/gopath/src/hyperledger/fabric/peer/scripts/
+      - ../channel-artifacts:/opt/gopath/src/hyperledger/fabric/peer/channel-artifacts
+      - ../config:/opt/gopath/src/hyperledger/fabric/peer/config
+      - /etc/hosts:/etc/hosts
+      - peer0.org2.ca.com:/var/hyperledger/production
+      - /etc/localtime:/etc/localtime
+      - ../chaincode/:/opt/gopath/src/hyperledger/fabric/peer/chaincode
+    depends_on:
+      - peer0.org2.ca.com
+    # extra_hosts:
+    #   - "orderer1.ca.com:10.8.15.118"
+    #   - "peer0.org1.ca.com:10.8.15.118"
+    #   - "peer0.org2.ca.com:10.8.13.67"
+    networks:
+      - Wayneyao

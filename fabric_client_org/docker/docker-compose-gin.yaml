@@ -1,0 +1,57 @@
+version: "3"
+
+networks:
+  Wayneyao:
+
+services:
+  web2:
+    build:
+      context: ../web
+      dockerfile: ./Dockerfile
+    container_name: wayneyao-web
+    restart: always
+    volumes:
+      - ../web:/wayneyao_web
+    ports:
+      - '8080:8080'
+    # depends_on:
+      # - server2
+    command: [ 'nginx-debug', '-g', 'daemon off;' ]
+    networks:
+      - Wayneyao
+
+  # server:
+  #   # extends:
+  #   #   file: docker-compose-mysql-redis.yaml
+  #   #   service: mysql
+  #   build:
+  #     context: ../../web/server
+  #     dockerfile: ./Dockerfile
+  #   container_name: wayneyao-server
+  #   restart: always
+  #   tty: true
+  #   # volumes:
+  #   #   - ../../web/server:/wayneyao_server
+  #   ports:
+  #     - '7777:8888'
+  #   networks:
+  #     - Wayneyao
+
+  ## depends_on在这两个服务开启后在启动
+    # depends_on:
+    #   - mysql
+    #   - redis
+    # links:
+    #   - mysql
+    #   - redis
+
+  ## 同文件启动则开启下面
+  # docker 继承其他文件
+  # mysql:
+  #   extends:
+  #     file: docker-compose-mysql-redis.yaml
+  #     service: mysql
+  # redis:
+  #   extends:
+  #     file: docker-compose-mysql-redis.yaml
+  #     service: redis

@@ -1,0 +1,20 @@
+
+version: '2'
+
+networks:
+  Wayneyao:
+
+services:
+  couchdb1:
+    container_name: couchdb1
+    restart: always #每次重启docker时都会重启相关的容器
+    image: couchdb:latest #3.1.1
+    environment:
+      - COUCHDB_USER=admin
+      - COUCHDB_PASSWORD=adminpw
+    ports:
+      - "6984:5984"
+    networks:
+      - Wayneyao
+  
+

@@ -1,0 +1,48 @@
+{
+	"name": "org2-network",
+	"version": "1.0.0",
+	"client": {
+		"tlsEnable": true,
+		"adminCredential": {
+			"id": "admin",
+			"password": "adminpw"
+		},
+		"enableAuthentication": true,
+		"organization": "Org2MSP",
+		"connection": {
+			"timeout": {
+				"peer": {
+					"endorser": "1000"
+				},
+				"orderer": "1000"
+			}
+		}
+	},
+	"channels": {
+		"mychannel": {
+			"peers": {
+				"peer0.org2.ca.com": {}
+			}
+		}
+	},
+	"organizations": {
+		"Org2MSP": {
+			"mspid": "Org2MSP",
+			"adminPrivateKey": {
+				"path": "/tmp/crypto/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk"
+			},
+			"peers": ["peer0.org2.ca.com"],
+			"signedCert": {
+				"path": "/tmp/crypto/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem"
+			}
+		}
+	},
+	"peers": {
+		"peer0.org2.ca.com": {
+			"tlsCACerts": {
+				"path": "/tmp/crypto/peerOrganizations/org2.ca.com/tlsca/tlsca.org2.ca.com-cert.pem"
+			},
+			"url": "grpcs://peer0.org2.ca.com:8051"
+		}
+	}
+}
