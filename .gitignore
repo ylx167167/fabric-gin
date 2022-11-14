@@ -9,7 +9,7 @@ fabric/scripts/org1log1.txt
 fabric/scripts/org1log2.txt
 fabric/scripts/org2log1.txt
 fabric/scripts/org2log2.txt
-# /fabric/chaincode/go/fabcar/vendor/
+# /fabric/chaincode/go/fabcar/vendodfr/
 # /fabric/chaincode/go/marble/vendor/
 # 忽略fabric_clinet_org
 
