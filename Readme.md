@@ -23,8 +23,8 @@ fabric https://goreportcard.com/badge/github.com/hyperledger/fabric
 blockchain-explorer-gin https://github.com/pixel-revolve/blockchain-explorer-gin
 
 # 项目启动的路径更改
-所有 /home/wayne/samba/bs_server 路径都改成您主机下的路径
-比如 /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
+所有 /home/wayne/samba/fabric-gin 路径都改成您主机下的路径
+比如 /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
 改成 当前您主机下的工程路径+fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
 
 

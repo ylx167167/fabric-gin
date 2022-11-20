@@ -4,7 +4,7 @@ client:
   logging:
     level: info
   cryptoconfig:
-    path: /home/wayne/samba/bs_server/fabric/organizations
+    path: /home/wayne/samba/fabric-gin/fabric/organizations
   credentialStore:
     path: "/tmp/state-store"
     cryptoStore:
@@ -12,9 +12,9 @@ client:
   tlsCerts:
     client:
       key:
-        path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
+        path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
       cert:
-        path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
+        path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
 
 organizations:
   Org1:
@@ -25,14 +25,14 @@ organizations:
     users:
       Admin:
         cert:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
         key:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/keystore/priv_sk
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/keystore/priv_sk
       User1:
         cert:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/signcerts/cert.pem
         key:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/keystore/priv_sk
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/keystore/priv_sk
   Org2:
     mspid: Org2MSP
 
@@ -41,14 +41,14 @@ organizations:
     users:
       Admin:
         cert:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
         key:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/keystore/priv_sk
       User1:
         cert:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/signcerts/cert.pem
         key:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/keystore/priv_sk
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/keystore/priv_sk
     peers:
       - peer0.org2.ca.com
        
@@ -56,11 +56,11 @@ peers:
   peer0.org1.ca.com:
     url: localhost:7051
     tlsCACerts:
-      path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/peers/peer0.org1.ca.com/tls/server.crt
+      path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/peers/peer0.org1.ca.com/tls/server.crt
   peer0.org2.ca.com:
     url: localhost:8051
     tlsCACerts:
-      path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/tls/server.crt
+      path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/peers/peer0.org2.ca.com/tls/server.crt
 
 
 #
@@ -108,5 +108,5 @@ orderers:
 
     tlsCACerts:
       # Certificate location absolute path
-      # path: /home/wayne/samba/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/tlscacerts/tlsca.ca.com-cert.pem
-      path: /home/wayne/samba/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/cacerts/localhost-9054-ca-orderer.pem
+      # path: /home/wayne/samba/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/tlscacerts/tlsca.ca.com-cert.pem
+      path: /home/wayne/samba/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/cacerts/localhost-9054-ca-orderer.pem
