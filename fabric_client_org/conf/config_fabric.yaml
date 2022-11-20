@@ -66,7 +66,7 @@ client:
 
   # Root of the MSP directories with keys and certs.
   cryptoconfig:
-    path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations
+    path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations
 
   # Some SDKs support pluggable KV stores, the properties under "credentialStore"
   # are implementation specific
@@ -275,10 +275,10 @@ organizations:
     users:
       Admin:
         cert:
-          path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
       User1:
         cert:
-          path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/User1@org1.ca.com/msp/signcerts/cert.pem
 
     certificateAuthorities:
 
@@ -298,10 +298,10 @@ organizations:
     users:
       Admin:
         cert:
-          path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/Admin@org2.ca.com/msp/signcerts/cert.pem
       User1:
         cert:
-          path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/users/User1@org2.ca.com/msp/signcerts/cert.pem
 
     certificateAuthorities:
 
@@ -314,7 +314,7 @@ organizations:
       cryptoPath: ordererOrganizations/ca.com/users/{username}@ca.com/msp
       Admin:
         cert:
-          path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/ordererOrganizations/ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/msp/signcerts/cert.pem
 
 #
 # List of orderers to send transaction and channel create/update requests to. For the time
@@ -358,14 +358,14 @@ orderers:
 
     tlsCACerts:
       # Certificate location absolute path
-      # path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/tlscacerts/tls-localhost-10054-ca-orderer.pem
+      # path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/tlscacerts/tls-localhost-10054-ca-orderer.pem
       # path: /home/fff/gopath/src/github.com/fabric/fabric-samples/test-network/organizations/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem
-      # path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/ordererOrganizations/ca.com/users/Admin@ca.com/msp/cacerts/localhost-10054-ca-orderer.pem
-      # path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/tlscacerts/tls-localhost-10054-ca-orderer.pem
-      # path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/tlscacerts/tls-localhost-10054-ca-orderer.pem
-      # path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/server.crt
+      # path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/users/Admin@ca.com/msp/cacerts/localhost-10054-ca-orderer.pem
+      # path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/tlscacerts/tls-localhost-10054-ca-orderer.pem
+      # path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/tlscacerts/tls-localhost-10054-ca-orderer.pem
+      # path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/tls/server.crt
 
-      path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/tlscacerts/tlsca.ca.com-cert.pem
+      path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/orderers/orderer1.ca.com/msp/tlscacerts/tlsca.ca.com-cert.pem
 #
 # List of peers to send various requests to, including endorsement, query
 # and event listener registration.
@@ -396,7 +396,7 @@ peers:
     tlsCACerts:
       # Certificate location absolute path
       # path: /home/fff/gopath/src/github.com/fabric/fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/tlsca/tlsca.org1.example.com-cert.pem
-      path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem
+      path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem
   
   peer0.org2.ca.com:
     # url: peer0.org2.ca.com:8051
@@ -405,7 +405,7 @@ peers:
     #  ssl-target-name-override: peer0.org2.example.com
 
     tlsCACerts:
-      path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/tlsca/tlsca.org2.ca.com-cert.pem
+      path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/tlsca/tlsca.org2.ca.com-cert.pem
       # path: /home/fff/gopath/src/github.com/fabric/fabric-samples/test-network/organizations/peerOrganizations/org2.example.com/tlsca/tlsca.org2.example.com-cert.pem
 
 #
@@ -422,7 +422,7 @@ certificateAuthorities:
     #  ssl-target-name-override: ca.org1.example.com
     tlsCACerts:
       # Comma-Separated list of paths
-      path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem
+      path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem
       # Client key and cert for SSL handshake with Fabric CA
       client:
         key:
@@ -443,7 +443,7 @@ certificateAuthorities:
   #   url: https://ca.org1.example.com:7154
   #   tlsCACerts:
   #     # Comma-Separated list of paths
-  #     path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem
+  #     path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem
   #     # Client key and cert for SSL handshake with Fabric CA
   #     client:
   #       key:
@@ -464,7 +464,7 @@ certificateAuthorities:
     #  ssl-target-name-override: ca.org2.example.com
     tlsCACerts:
       # Comma-Separated list of paths
-      path: /home/wayne/samba/gopath/src/bs_server/fabric/organizations/peerOrganizations/org2.ca.com/tlsca/tlsca.org2.ca.com-cert.pem
+      path: /home/wayne/samba/gopath/src/fabric-gin/fabric/organizations/peerOrganizations/org2.ca.com/tlsca/tlsca.org2.ca.com-cert.pem
       # Client key and cert for SSL handshake with Fabric CA
       client:
         key:
