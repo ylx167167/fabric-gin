@@ -1,6 +1,6 @@
 # 内含使用说明 
-bs_server/fabric/README.md  启动网络
-bs_server/fabric_client_org/README.md 搭建区块链客户端
+fabric-gin/fabric/README.md  启动网络
+fabric-gin/fabric_client_org/README.md 搭建区块链客户端
 部署智能合约
 编译智能合约
 
