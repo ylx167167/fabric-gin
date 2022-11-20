@@ -38,7 +38,7 @@ orderers:
     tlsCACerts:
       # Certificate location absolute path
       # path: D:\Resource Files\root\fabric-samples\test-network\organizations\ordererOrganizations\example.com\tlsca\tlsca.example.com-cert.pem
-      path: /home/wayne/samba/bs_server/fabric/organizations/ordererOrganizations/ca.com/msp/tlscacerts/tlsca.ca.com-cert.pem
+      path: /home/wayne/samba/fabric-gin/fabric/organizations/ordererOrganizations/ca.com/msp/tlscacerts/tlsca.ca.com-cert.pem
 
 client:
   organization: Org1
@@ -46,7 +46,7 @@ client:
     level: info
   cryptoconfig:
     # path: D:\Resource Files\root\fabric-samples\test-network\organizations
-    path: /home/wayne/samba/bs_server/fabric/organizations
+    path: /home/wayne/samba/fabric-gin/fabric/organizations
   credentialStore:
     path: "/tmp/state-store"
     cryptoStore:
@@ -55,28 +55,28 @@ client:
     client:
       key:
         # path: D:\Resource Files\root\fabric-samples\test-network\organizations\peerOrganizations\org1.example.com\users\User1@org1.example.com\tls\client.key
-        path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/keystore/priv_sk
+        path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/keystore/priv_sk
       cert:
         # path: D:\Resource Files\root\fabric-samples\test-network\organizations\peerOrganizations\org1.example.com\users\User1@org1.example.com\tls\client.crt
-        path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
+        path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
 
 organizations:
   Org1:
     mspid: Org1MSP
     # cryptoPath: D:\Resource Files\root\fabric-samples\test-network\organizations\peerOrganizations\org1.example.com\users\{username}@org1.example.com\msp
-    cryptoPath: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/{username}@org1.ca.com/msp
+    cryptoPath: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/{username}@org1.ca.com/msp
     peers:
       - peer0.org1.ca.com
     users:
       User1:
         certs:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/signcerts/cert.pem
         key:
-          path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/keystore/priv_sk
+          path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/users/Admin@org1.ca.com/msp/keystore/priv_sk
 peers:
   peer0.org1.ca.com:
     # url: peer0.org1.ca.com:7051
     url: localhost:7051
     tlsCACerts:
       # path: D:\Resource Files\root\fabric-samples\test-network\organizations\peerOrganizations\org1.example.com\tlsca\tlsca.org1.example.com-cert.pem
-        path: /home/wayne/samba/bs_server/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem
+        path: /home/wayne/samba/fabric-gin/fabric/organizations/peerOrganizations/org1.ca.com/tlsca/tlsca.org1.ca.com-cert.pem

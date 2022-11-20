@@ -7,7 +7,7 @@ aliyun-oss:
   base-path: yourBasePath
 autocode:
   transfer-restart: true
-  root: /home/wayne/samba/bs_server/fabric_client_org
+  root: /home/wayne/samba/fabric-gin/fabric_client_org
   server: /server
   server-api: /api/v1/autocode
   server-initialize: /initialize
